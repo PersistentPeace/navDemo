@@ -5,49 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>我的导航</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <header></header>
-  <main id='zhangsan'>
-    <div>
-      <kbd>q</kbd>
-      <kbd>w</kbd>
-      <kbd>e</kbd>
-      <kbd>r</kbd>
-      <kbd>e</kbd>
-      <kbd>r</kbd>
-      <kbd>e</kbd>
-      <kbd>e</kbd>
-      <kbd>e</kbd>
-      <kbd>2</kbd>
-    </div>
-    <div>
-      <kbd>a</kbd>
-      <kbd>a</kbd>
-      <kbd>a</kbd>
-      <kbd>a</kbd>
-      <kbd>a</kbd>
-      <kbd>a</kbd>
-      <kbd>a</kbd>
-      <kbd>a</kbd>
-      <kbd>a</kbd>
-    </div>
-    <div>
-      <kbd>z</kbd>
-      <kbd>z</kbd>
-      <kbd>z</kbd>
-      <kbd>z</kbd>
-      <kbd>z</kbd>
-      <kbd>z</kbd>
-      <kbd>z</kbd>
-    </div>
+  <main>
+    <div class="wrapper" id='x'></div>
   </main>
   <footer></footer>
   <script>
     var keys = {
-      0:['q','w','e','r','t','y','u','i','o','p'],
-      1:['a','s','d','f','g','h','j','k','l'],
-      2:['z','x','c','v','b','n','m'],
+      0:{0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
+      1:{0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:9},
+      2:{0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:7},
       length:3
     }
     // 这是两个数组，外面的数组里面嵌套了一个数组。方括号是数组的简写。
@@ -67,9 +37,32 @@
       z:'zhihu.com',
       m:'www.mcdownload.com.cn'
     }
-    div1 = document.createElement('div')
-    // 这一句表示创建一个标签。
-    zhangsan.appendChild(div);  
+    index = 0;
+    while(index < keys['length']){
+      // 索引要加单引号
+      y = document.createElement("div");
+      // 这一句表示创建一个div标签。
+      x.appendChild(y);
+      // main1这个标签增加一个字标签div1.此时用开发者工具可见main里面有一个div标签
+      // 注意，这里是main1是不能加双引号的。
+      row = keys[index];
+      index2 = 0; 
+        while(index2 < row['length']){
+        kbd1 = document.createElement("kbd");
+        kbd1.textContent = row[index2];
+        y.appendChild(kbd1);
+        index2 += 1;  
+      }
+      index += 1;
+    } 
+    document.onkeypress = function(fsfa){
+      // function里面的参数是随便取的
+      console.log("您输入了一个键")
+      console.log(fsfa)
+      key = fsfa['key']
+      // 这一步可以知道用户按了什么键
+
+    }
   </script>
 </body>
 </html>
